@@ -1,107 +1,127 @@
 import React, { useEffect, useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 
-/**
- * Coega Peace Homes OLD AGE HOME — Services page
- * Matches the design system from Home.jsx / About.jsx:
- *  pine #16302A · sand #F1E9DA · gold #C68A2E · sage #7F9A87 · ink #24211B
- *  display: Newsreader · body: Work Sans · utility: Space Mono
- *
- * IMAGE NOTE: every image below is a neutral placeholder (picsum.photos,
- * seeded per-service so it stays stable on reload). Replace each `image`
- * with real, licensed photography before launch.
- */
+
+const pexelsImage = (id, width = 1200) =>
+  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${width}`;
+
+
+// ------------------------------------------------------------
+// HERO SLIDER
+// These images introduce the overall story:
+// care, companionship and active living.
+// ------------------------------------------------------------
 
 const sliderImages = [
-  'https://picsum.photos/seed/coegapeacehomes-slide1/1600/700',
-  'https://picsum.photos/seed/coegapeacehomes-slide2/1600/700',
-  'https://picsum.photos/seed/coegapeacehomes-slide3/1600/700',
+  pexelsImage(18459198, 1800), // Caregiver with elderly residents
+  pexelsImage(29372727, 1800), // Compassionate mobility support
+  pexelsImage(5638644, 1800),  // Elderly woman enjoying time with family
 ];
+
+
+// ------------------------------------------------------------
+// SERVICES
+// Every image has been selected to visually represent
+// the actual service rather than using generic elderly photos.
+// ------------------------------------------------------------
 
 const coegapeacehomesServices = [
   {
     title: '24/7 Nursing & Medical Supervision',
     description:
       'Our residents benefit from round-the-clock nursing care, ensuring help is always available when needed. Skilled professionals monitor health conditions and administer medications promptly. In case of emergencies, staff are trained to respond efficiently and compassionately. This constant supervision brings peace of mind to residents and their families alike.',
-    image: 'https://picsum.photos/seed/coegapeacehomes-svc-nursing/700/500',
+    image: pexelsImage(18459198),
   },
+
   {
     title: "Alzheimer's & Dementia Care",
     description:
       "We provide specialised memory care for residents living with Alzheimer's or dementia. Our trained caregivers use gentle, supportive techniques to reduce confusion and stress. Residents enjoy a secure, structured environment with familiar routines to maintain cognitive function. Memory games and music therapy help enhance daily life and emotional wellbeing.",
-    image: 'https://picsum.photos/seed/coegapeacehomes-svc-dementia/700/500',
+    image: pexelsImage(18459245),
   },
+
   {
     title: 'Mobility & Transfer Assistance',
     description:
       'Residents receive assistance with walking, moving between rooms, and transferring between beds and chairs. We prioritise safety and comfort while promoting as much independence as possible. Staff use proper technique and supportive tools like walkers and wheelchairs, helping prevent injuries while encouraging confidence in daily movement.',
-    image: 'https://picsum.photos/seed/coegapeacehomes-svc-mobility/700/500',
+    image: pexelsImage(29372727),
   },
+
   {
     title: 'Personal Hygiene & Grooming Support',
     description:
       'Our caregivers help residents maintain personal cleanliness with respect and sensitivity. Services include assistance with bathing, dressing, oral care, and grooming routines. Every effort is made to ensure residents feel dignified, refreshed, and confident, with care plans adapted to each individual\'s preferences and physical needs.',
-    image: 'https://picsum.photos/seed/coegapeacehomes-svc-hygiene/700/500',
+    image: pexelsImage(18429310),
   },
+
   {
     title: 'Housekeeping & Laundry Services',
     description:
       'A clean environment promotes health and happiness, and we ensure our facility stays spotless. Staff take care of room cleaning, linen changes, and laundry, so residents always have fresh clothes and bedding. We keep personal belongings organised and living spaces tidy, creating a homely, stress-free atmosphere.',
-    image: 'https://picsum.photos/seed/coegapeacehomes-svc-housekeeping/700/500',
+    image: pexelsImage(29372733),
   },
+
   {
     title: 'Healthy, Home-Cooked Meals',
     description:
       'We serve delicious, nutritious meals prepared daily by our kitchen team. Menus are crafted to meet dietary needs, including diabetic, low-sodium, and culturally appropriate meals. Residents enjoy meals in a social dining setting that fosters connection and conversation, with snacks and beverages available throughout the day.',
-    image: 'https://picsum.photos/seed/coegapeacehomes-svc-meals/700/500',
+    image: pexelsImage(29372696),
   },
+
   {
     title: 'Vital Signs Monitoring & Medical Records',
     description:
       'Our nursing staff routinely monitor vital signs such as blood pressure, heart rate, and temperature. Records are securely maintained and shared with doctors and families as needed. Monitoring helps detect changes in health early, preventing complications — part of our commitment to proactive, personalised care.',
-    image: 'https://picsum.photos/seed/coegapeacehomes-svc-vitals/700/500',
+    image: pexelsImage(6129688),
   },
+
   {
     title: 'Toileting & Continence Assistance',
     description:
       'Residents who need help with toileting are treated with the utmost care and dignity. We assist with toilets, commodes, and continence care while maintaining hygiene and privacy. Staff are trained to prevent discomfort and maintain cleanliness at all times, so residents feel safe and respected.',
-    image: 'https://picsum.photos/seed/coegapeacehomes-svc-toileting/700/500',
+    image: pexelsImage(16364306),
   },
+
   {
     title: 'Companionship & Emotional Support',
     description:
       'Beyond physical care, we provide genuine companionship and emotional nurturing. Our staff engage residents in conversation, shared hobbies, and quiet reflection. Emotional connection is essential to wellbeing, especially in later years — every resident is treated like family, never left to feel alone.',
-    image: 'https://picsum.photos/seed/coegapeacehomes-svc-companion/700/500',
+    image: pexelsImage(18429371),
   },
+
   {
     title: 'Daily Activity & Engagement Programmes',
     description:
       'We organise a wide variety of daily activities to keep residents active and joyful — light exercise, art classes, puzzles, gardening, and cultural events. Each programme is tailored to residents\' abilities and interests to encourage participation, helping build community and brighten each day.',
-    image: 'https://picsum.photos/seed/coegapeacehomes-svc-activity/700/500',
+    image: pexelsImage(7551608),
   },
+
   {
     title: 'Bathing & Dressing Assistance',
     description:
       "We offer support with daily routines such as getting dressed and bathing. Caregivers ensure residents are clean, comfortable, and appropriately dressed for all seasons. Assistance is given respectfully, maintaining the individual's independence where possible — helping start each day on a positive note.",
-    image: 'https://picsum.photos/seed/coegapeacehomes-svc-dressing/700/500',
+    image: pexelsImage(18459195),
   },
+
   {
     title: 'Cognitive & Behavioural Monitoring',
     description:
       'We keep a close eye on changes in mood, memory, or behaviour that may signal a health concern. Any shifts are documented and discussed with healthcare providers and families, ensuring early intervention and appropriate care adjustments — part of our holistic approach to resident wellness.',
-    image: 'https://picsum.photos/seed/coegapeacehomes-svc-cognitive/700/500',
+    image: pexelsImage(29372745),
   },
+
   {
     title: 'Counselling & Pastoral Support',
     description:
       'We offer emotional and spiritual care through access to counsellors, social workers, and pastoral visitors. Whether residents are dealing with grief, loneliness, or personal challenges, someone is always available to talk. Group and one-on-one sessions are available as needed, supporting emotional balance and inner peace.',
-    image: 'https://picsum.photos/seed/coegapeacehomes-svc-counselling/700/500',
+    image: pexelsImage(18429415),
   },
+
   {
     title: 'Activity Journals & Family Updates',
     description:
       "We keep detailed logs of each resident's participation in activities, mood, and health. These records help staff track progress and make personalised care decisions. Families receive regular updates, including photos and summaries of their loved one's day — a meaningful way to stay connected from afar.",
-    image: 'https://picsum.photos/seed/coegapeacehomes-svc-family/700/500',
+    image: pexelsImage(5638644),
   },
 ];
 

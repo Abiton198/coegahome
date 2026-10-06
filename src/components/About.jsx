@@ -11,7 +11,9 @@ import { FaMapMarkerAlt, FaShieldAlt, FaTree, FaEnvelope } from 'react-icons/fa'
  * Replace with your own licensed / on-site photography before launch.
  */
 
-const aboutImg = 'https://picsum.photos/seed/coegapeacehomes-about/1600/700';
+const aboutImg =
+  'https://images.pexels.com/photos/18459198/pexels-photo-18459198.jpeg?auto=compress&cs=tinysrgb&w=1600';
+
 
 export default function About() {
   return (
