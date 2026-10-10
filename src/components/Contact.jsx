@@ -79,15 +79,15 @@ export default function Contact() {
   const locations = [
     {
       label: 'Head Office',
-      lines: ['Kenton-on-Sea,', 'Gqeberha, 6070'],
-      postal: 'PO Box 28, Kenton-on-Sea, Gqeberha, 6070',
+      lines: ['12 Milkwood Close,Fernglen', 'Gqeberha, 6070'],
+      postal: '12 Milkwood Close,Fernglen, Gqeberha, 6070',
       tel: '+27 41 555 0123',
       email: 'info@coegapeacehomes.co.za',
     },
     {
       label: 'Coega Peace Homes',
-      lines: ['Kenton-on-Sea,', 'Gqeberha, 6070'],
-      postal: 'PO Box 28, Kenton-on-Sea, Gqeberha, 6070',
+      lines: ['12 Milkwood Close,Fernglen', 'Gqeberha, 6070'],
+      postal: '12 Milkwood Close,Fernglen, Gqeberha, 6070',
       tel: '+27 41 555 0124',
       email: 'admissions@coegapeacehomes.co.za',
     },
